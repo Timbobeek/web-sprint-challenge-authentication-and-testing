@@ -54,6 +54,25 @@ Your finished project must include all of the following requirements (further in
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+
+In the session based authentication, the server will create a session for the user after the user logs in. The session id is then stored on a cookie on the user’s browser. While the user stays logged in, the cookie would be sent along with every subsequent request. The server can then compare the session id stored on the cookie against the session information stored in the memory to verify user’s identity and sends response with the corresponding state.
+
+In the token based application, the server creates JWT with a secret and sends the JWT to the client. The client stores the JWT (usually in local storage) and includes JWT in the header with every request. The server would then validate the JWT with every request from the client and sends response.
+
+
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
+
+It provides an algorithm that hashes the information multiple times (rounds), meaning an attacker needs to have the hash, know the algorithm used, and how many rounds were used to generate the hash in the first place.
+
 3. How are unit tests different from integration and end-to-end testing?
+
+Unit tests check that a unit works correctly in isolation.
+
+Integration tests check that different parts of the application work together in harmony. They are more advanced and more challenging to write than a unit test.
+
+End-to-end testing is a technique that tests the entire software product from beginning to end to ensure the application flow behaves as expected.
+
+
 4. How does _Test Driven Development_ change the way we write applications and tests?
+
+Test driven development is the process of writing tests before code. In theory, you can write much higher quality code when you start with the end (the tests) in mind. For example, first, you would write a test that is empty and therefore is green (start with something). Then, you write the smallest amount of code to turn it red. Then, smallest amount of code to make it green and be testing what is necessary. Once that happens, the code can be improved via refactoring. Pretty much, our tests dictate the shape of the code.
