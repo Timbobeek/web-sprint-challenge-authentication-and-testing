@@ -1,24 +1,21 @@
 const db = require("../../data/dbConfig");
 
 /**
-  resolves to a user with all users that match the filter condition
+  resolves to a user with all users that match the username
  */
 function findByUsername(username) {
   return db("users").where({ username: username }).first();
 }
 
 /**
-  resolves to the user { user_id, username } with the given user_id
+  resolves to the user { id, username } with the given userId
  */
-function findById(user_id) {
-  return db("users")
-    .select("user_id", "username")
-    .where("user_id", user_id)
-    .first();
+function findById(userId) {
+  return db("users").where("id", userId).first();
 }
 
 /**
-  resolves to the newly inserted user { user_id, username }
+  resolves to the newly inserted user { id, username, password }
  */
 async function add(user) {
   const [id] = await db("users").insert(user);
